@@ -1,33 +1,124 @@
-# Cyber Security Internship Task 2 - Phishing Email Analysis
+# 🛡️ CyberSec Task 2 — Phishing Email Analyzer  
 
-**IMPORTANT NOTICE:** These files are synthetic and for learning purposes only.
+A lightweight **Phishing Email Detection Tool** built for cybersecurity interns and analysts to analyze `.eml` email files for potential phishing indicators.  
 
-## Objective
-Analyze a sample phishing email to identify indicators of compromise and phishing tactics.
+---
 
-## Files Included
-- `sample_phishing_email.txt`
-- `sample_phishing_email.html`
-- `sample_header.txt`
-- `phishing_analysis_report.md`
+## 📌 Overview  
 
-## Tools Used
-- Google Header Analyzer
-- MXToolbox Header Analyzer
-- Notepad++ / VS Code
+This project detects phishing attempts by analyzing email headers, authentication failures, URLs, and content-based red flags.  
 
-## Threat Indicators (from Internship Guide)
-1. Spoofed Sender Address
-2. Header Discrepancies (SPF/DKIM/DMARC failures)
-3. Suspicious Links or Attachments
-4. Urgent or Threatening Language
-5. Mismatched URLs
-6. Grammar/Spelling Errors
-7. Social Engineering Signs
-8. Generic Greeting (not personalized)
+✅ Works fully **offline**  
+✅ **Auto-detects .eml files** — no need to rename  
+✅ Uses only **built-in Python libraries** (no installation needed)  
 
-## Outcome
-Developed awareness of phishing patterns and header analysis.
+---
 
-## Submission
-Upload to GitHub and submit repo link via the provided form.
+## ⚙️ Installation  
+
+### 1️⃣ Clone the repository  
+```bash
+git clone https://github.com/blacklatch-cybersecurity/cybersec_task2_phishing_analysis.git
+cd cybersec_task2_phishing_analysis
+
+Make sure Python 3 is installed
+python3 --version
+
+If not installed:
+sudo apt update && sudo apt install python3 -y
+
+| Feature                 | Description                                                     |
+| ----------------------- | --------------------------------------------------------------- |
+| **Auto .eml Detection** | Automatically analyzes the first `.eml` file in the folder      |
+| **Header Analysis**     | Checks for missing or failed SPF, DKIM, DMARC headers           |
+| **Suspicious URLs**     | Detects IP-based or foreign (.ru, .tk, .xyz, etc.) domains      |
+| **Urgency Detection**   | Flags phrases like “Verify your account” or “within 24 hours”   |
+| **Brand Impersonation** | Finds fake domains like `paypa1.com` pretending to be PayPal    |
+| **Final Verdict**       | Classifies risk: `LIKELY PHISHING`, `SUSPICIOUS`, or `LOW RISK` |
+
+📬 How to Analyze Emails
+🧪 Option 1 — Use included safe demo
+python3 analyze_email.py phishing_sample.eml
+
+⚡ Option 2 — Auto-detect mode
+Just place your .eml file in the folder and run:
+python3 analyze_email.py
+
+The tool automatically finds and analyzes the first .eml file.
+
+Option 3 — Analyze Gmail email
+
+In Gmail, open the suspicious message → click ⋮ (three dots) → Show original
+
+Click Download Original
+
+Move it into this project folder:
+
+mv ~/Downloads/original_message.eml suspicious.eml
+
+
+Run the analyzer:
+python3 analyze_email.py suspicious.eml
+
+🔍 Example Output
+📂 Automatically detected: suspicious.eml
+
+====== EMAIL SUMMARY ======
+From: "PayHelp Support" <security@paypa1.example.com>
+To: victim@example.com
+Subject: URGENT: Verify Your Account Now
+Date: Fri, 10 Oct 2025 09:23:40 +0000
+Detected URLs: 1
+  - http://example.com/verify
+
+====== FINDINGS ======
+- Suspicious domain similarity: paypa1.example.com ≈ paypal
+- SPF result: FAIL
+- DKIM result: failed or missing
+- DMARC result: failed or missing
+- Urgency phrase detected: verify your account
+- Generic greeting: Uses generic greeting like 'Hello Customer'
+
+Score: 9  
+VERDICT: **LIKELY PHISHING**
+=========================
+
+🧾 Understanding Verdicts
+Verdict	Meaning	Recommended Action
+LIKELY PHISHING	Multiple red flags detected	Report or delete immediately
+SUSPICIOUS — INVESTIGATE	Some red flags; verify sender and links	Inspect manually
+LOW RISK	No strong phishing indicators found	Still confirm before clicking any links
+
+🧠 Developer Tips
+
+Run analyzer on all .eml files in the folder:
+
+for f in *.eml; do
+  python3 analyze_email.py "$f"
+
+Then just run:
+analyze_phish
+
+🔐 Safety Notes
+
+⚠️ Do NOT open suspicious emails or attachments directly.
+This tool only reads .eml files as text — no scripts are executed.
+Use for analysis and education only.
+
+🌐 Author
+
+Created by: BlackLatch Cybersecurity
+Platform: Parrot OS (Linux)
+Language: Python 3
+
+🪪 License
+
+Licensed under the MIT License — free for educational and research use.
+
+🚀 Quick Start Summary
+git clone https://github.com/blacklatch-cybersecurity/cybersec_task2_phishing_analysis.git
+cd cybersec_task2_phishing_analysis
+python3 analyze_email.py
+
+
+✅ The analyzer automatically finds your .eml file and reports whether it’s phishing or safe.
