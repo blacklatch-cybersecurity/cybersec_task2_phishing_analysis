@@ -1,0 +1,20 @@
+Return-Path: <security@paypa1.example.com>
+Delivered-To: victim@example.com
+Received: from local-lab (localhost [127.0.0.1])
+    by lab.local with SMTP; Fri, 10 Oct 2025 09:23:45 +0000
+From: "PayHelp Support" <security@paypa1.example.com>
+To: victim@example.com
+Subject: URGENT: Verify Your Account Now
+Date: Fri, 10 Oct 2025 09:23:40 +0000
+Message-ID: <lab-12345@example.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset=UTF-8
+Authentication-Results: mail.example.net; spf=fail; dkim=none; dmarc=fail
+
+<html>
+  <body>
+    <p>Hello Customer,</p>
+    <p>We detected suspicious activity on your account. Please <a href="http://example.com/verify">verify your account</a> within 24 hours to avoid suspension.</p>
+    <p>Regards,<br>PayHelp Security Team</p>
+  </body>
+</html>
