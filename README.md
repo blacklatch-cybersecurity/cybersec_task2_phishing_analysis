@@ -27,15 +27,6 @@ python3 --version
 If not installed:
 sudo apt update && sudo apt install python3 -y
 
-| Feature                 | Description                                                     |
-| ----------------------- | --------------------------------------------------------------- |
-| **Auto .eml Detection** | Automatically analyzes the first `.eml` file in the folder      |
-| **Header Analysis**     | Checks for missing or failed SPF, DKIM, DMARC headers           |
-| **Suspicious URLs**     | Detects IP-based or foreign (.ru, .tk, .xyz, etc.) domains      |
-| **Urgency Detection**   | Flags phrases like “Verify your account” or “within 24 hours”   |
-| **Brand Impersonation** | Finds fake domains like `paypa1.com` pretending to be PayPal    |
-| **Final Verdict**       | Classifies risk: `LIKELY PHISHING`, `SUSPICIOUS`, or `LOW RISK` |
-
 📬 How to Analyze Emails
 🧪 Option 1 — Use included safe demo
 python3 analyze_email.py phishing_sample.eml
