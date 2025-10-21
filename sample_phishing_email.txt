@@ -1,0 +1,18 @@
+From: "PayHelp Support" <security@paypa1.example.com>
+To: victim@example.com
+Subject: URGENT: Verify Your Account Now
+
+Hello Customer,
+
+We detected suspicious activity on your account. To keep your account secure we must verify your identity immediately.
+Please verify your account within 24 hours to avoid suspension.
+
+Verify now: http://example.com/verify
+
+If you do not verify your account, your access will be suspended.
+
+Regards,
+PayHelp Security Team
+
+--
+NOTE: This is a synthetic phishing sample for learning purposes only.
