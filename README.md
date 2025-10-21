@@ -1,4 +1,4 @@
-# 🛡️ CyberSec Task 2 — Phishing Email Analyzer  
+# Phishing Email Analyzer  
 
 A lightweight **Phishing Email Detection Tool** built for cybersecurity interns and analysts to analyze `.eml` email files for potential phishing indicators.  
 
@@ -16,16 +16,24 @@ This project detects phishing attempts by analyzing email headers, authenticatio
 
 ## ⚙️ Installation  
 
-### 1️⃣ Clone the repository  
-```bash
+### Clone the repository  
+```
+bash
 git clone https://github.com/blacklatch-cybersecurity/cybersec_task2_phishing_analysis.git
 cd cybersec_task2_phishing_analysis
 
-Make sure Python 3 is installed
+Make sure Python 3 is installed:
+```bash
 python3 --version
 
 If not installed:
 sudo apt update && sudo apt install python3 -y
+
+| Verdict | Meaning | Recommended Action |
+|----------|----------|--------------------|
+| **LIKELY PHISHING** | Multiple red flags detected | Report or delete immediately |
+| **SUSPICIOUS — INVESTIGATE** | Some red flags; verify sender and links | Inspect manually |
+| **LOW RISK** | No strong phishing indicators found | Still confirm before clicking any links |
 
 📬 How to Analyze Emails
 🧪 Option 1 — Use included safe demo
@@ -37,7 +45,7 @@ python3 analyze_email.py
 
 The tool automatically finds and analyzes the first .eml file.
 
-Option 3 — Analyze Gmail email
+### Option 3 — Analyze Gmail email
 
 In Gmail, open the suspicious message → click ⋮ (three dots) → Show original
 
@@ -47,8 +55,8 @@ Move it into this project folder:
 
 mv ~/Downloads/original_message.eml suspicious.eml
 
-
 Run the analyzer:
+
 python3 analyze_email.py suspicious.eml
 
 🔍 Example Output
@@ -84,13 +92,22 @@ LOW RISK	No strong phishing indicators found	Still confirm before clicking any l
 
 Run analyzer on all .eml files in the folder:
 
+```bash
 for f in *.eml; do
   python3 analyze_email.py "$f"
+done
+```
+
+Make it globally runnable (optional):
+sudo cp analyze_email.py /usr/local/bin/analyze_phish
+sudo chmod +x /usr/local/bin/analyze_phish
 
 Then just run:
 analyze_phish
 
-🔐 Safety Notes
+## 🧠 Developer Tips
+
+## 🔐 Safety Notes
 
 ⚠️ Do NOT open suspicious emails or attachments directly.
 This tool only reads .eml files as text — no scripts are executed.
@@ -103,13 +120,11 @@ Platform: Parrot OS (Linux)
 Language: Python 3
 
 🪪 License
-
 Licensed under the MIT License — free for educational and research use.
 
 🚀 Quick Start Summary
 git clone https://github.com/blacklatch-cybersecurity/cybersec_task2_phishing_analysis.git
 cd cybersec_task2_phishing_analysis
 python3 analyze_email.py
-
 
 ✅ The analyzer automatically finds your .eml file and reports whether it’s phishing or safe.
